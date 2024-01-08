@@ -35,6 +35,12 @@ dependencies {
     implementation 'jakarta.servlet:jakarta.servlet-api:6.0.0'
     implementation 'org.glassfish.web:jakarta.servlet.jsp.jstl:3.0.1'
 
+    // swagger
+    implementation 'org.springdoc:springdoc-openapi-starter-common:2.0.2'
+
+
+
+
 }
 
 tasks.named('test') {
