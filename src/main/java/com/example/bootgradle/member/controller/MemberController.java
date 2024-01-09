@@ -32,9 +32,8 @@ public class MemberController {
     }
 
     @GetMapping("/member/createPage")
-    public ModelAndView userInsertPage(){
-        ModelAndView modelAndView = new ModelAndView("/member/memberCreate");
-        return modelAndView;
+    public String userInsertPage(){
+        return "/member/Create";
     }
 
     @PostMapping("/member/create")
