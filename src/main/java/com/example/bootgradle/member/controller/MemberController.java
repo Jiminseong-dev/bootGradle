@@ -3,6 +3,7 @@ package com.example.bootgradle.member.controller;
 import com.example.bootgradle.member.controller.dto.MemberDto;
 import com.example.bootgradle.member.repository.entity.MemberEntity;
 import com.example.bootgradle.member.service.MemberService;
+import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -16,28 +17,32 @@ import org.springframework.web.servlet.ModelAndView;
 import java.util.ArrayList;
 import java.util.List;
 
-@Controller
+@RestController
 @RequiredArgsConstructor
 @Slf4j
 @Tag(name = "MemberController", description = "회원 관련 API")
 public class MemberController {
 
     private final MemberService memberService;
-
+    @Operation(summary = "메인 페이지 이동", description = "사용자 목록이 조회된다.")
     @GetMapping("/")
-    public String index(Model model){
+    public ModelAndView index(){
+        ModelAndView modelAndView = new ModelAndView("index");
         List<MemberDto> memberDtoList = memberService.findAll();
-        model.addAttribute("member",memberDtoList);
-        return "index";
+        modelAndView.addObject("member",memberDtoList);
+        return modelAndView;
     }
-
+    @Operation(summary = "사용자 추가 페이지 이동", description = "사용자 추가 페이지 이동")
     @GetMapping("/member/createPage")
-    public String userInsertPage(){
-        return "/member/Create";
+    public ModelAndView userInsertPage(){
+        ModelAndView modelAndView = new ModelAndView("/member/memberCreate");
+        return modelAndView;
     }
 
+    @Operation(summary = "사용자 추가")
     @PostMapping("/member/create")
-    public String userInsert(MemberDto memberDto){
+    public ModelAndView userInsert(MemberDto memberDto){
+        ModelAndView modelAndView = new ModelAndView("index");
         log.info(memberDto.toString());
         String id = memberDto.getId();
         String name = memberDto.getName();
@@ -45,6 +50,6 @@ public class MemberController {
         String address = memberDto.getAddress();
         String email = memberDto.getEmail();
         memberService.create(id,phoneNumber,address,name,email);
-        return "index";
+        return modelAndView;
     }
 }

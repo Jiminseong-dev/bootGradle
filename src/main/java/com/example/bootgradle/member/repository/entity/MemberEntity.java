@@ -9,6 +9,7 @@ import lombok.*;
 @NoArgsConstructor // 파라미터가 없는 디폴트 생성자를 생성
 @AllArgsConstructor(access = AccessLevel.PROTECTED) // 모든 필드 값을 파라미터로 받는 생성자를 생성
 @ToString
+@Data
 @Table(name = "member") // 테이블 명을 지정한다.
 public class MemberEntity {
 
