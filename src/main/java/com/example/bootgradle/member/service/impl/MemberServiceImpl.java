@@ -21,16 +21,26 @@ public class MemberServiceImpl implements MemberService {
         this.memberDataHandler = memberDataHandler;
     }
     @Override
-    public MemberDto create(String id, String phoneNumber, String address, String name, String email) {
+    public int create(MemberDto memberDto) {
 
-        MemberEntity memberEntity = memberDataHandler.create(id, phoneNumber, address, name, email);
-        return new MemberDto(memberEntity.getId(),memberEntity.getPhoneNumber(),memberEntity.getAddress(),memberEntity.getName(),memberEntity.getEmail());
+
+        MemberEntity memberEntity = memberDataHandler.create(memberDto);
+        if(memberEntity == null){
+            return 0;
+        }
+        return 1;
     }
 
     @Override
     public List<MemberDto> findAll() {
         List<MemberEntity> memberEntityList = memberDataHandler.findAll();
-        List<MemberDto> memberDtoList = memberEntityList.stream().map(memberEntity -> new MemberDto(memberEntity.getId(),memberEntity.getPhoneNumber(),memberEntity.getAddress(),memberEntity.getName(),memberEntity.getEmail())).toList();
+        List<MemberDto> memberDtoList = memberEntityList.stream().map(memberEntity -> new MemberDto().builder()
+                .id(memberEntity.getId())
+                .phoneNumber(memberEntity.getPhoneNumber())
+                .address(memberEntity.getAddress())
+                .name(memberEntity.getName())
+                .email(memberEntity.getEmail())
+                .build()).toList();
         return memberDtoList;
     }
 }

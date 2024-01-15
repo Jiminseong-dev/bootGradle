@@ -23,16 +23,17 @@ public class MemberDataHandlerImpl implements MemberDataHandler {
     }
 
     @Override
-    public MemberEntity create(String id, String phoneNumber, String address, String name, String email) {
+    public MemberEntity create(MemberDto memberDto) {
 
         MemberEntity memberEntity = MemberEntity.builder()
-                .id(id)
-                .phoneNumber(phoneNumber)
-                .address(address)
-                .name(name)
-                .email(email)
+                .id(memberDto.getId())
+                .phoneNumber(memberDto.getPhoneNumber())
+                .address(memberDto.getAddress())
+                .name(memberDto.getName())
+                .email(memberDto.getEmail())
+                .detailAddress(memberDto.getDetailAddress())
+                .postcode(memberDto.getPostcode())
                 .build();
-
         return memberDaoImpl.create(memberEntity);
     }
     @Override

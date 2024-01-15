@@ -23,5 +23,7 @@ public class MemberEntity {
     private String email;
     private String phoneNumber;
     private String address;
+    private String detailAddress;
+    private String postcode;
     private String name;
 }

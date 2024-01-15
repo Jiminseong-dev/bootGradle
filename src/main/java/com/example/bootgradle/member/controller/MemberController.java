@@ -42,14 +42,10 @@ public class MemberController {
     @Operation(summary = "사용자 추가")
     @PostMapping("/member/create")
     public ModelAndView userInsert(MemberDto memberDto){
-        ModelAndView modelAndView = new ModelAndView("index");
+        ModelAndView modelAndView = new ModelAndView("redirect:/");
         log.info(memberDto.toString());
-        String id = memberDto.getId();
-        String name = memberDto.getName();
-        String phoneNumber = memberDto.getPhoneNumber();
-        String address = memberDto.getAddress();
-        String email = memberDto.getEmail();
-        memberService.create(id,phoneNumber,address,name,email);
+        int result = memberService.create(memberDto);
+        log.info(result+"");
         return modelAndView;
     }
 }

@@ -20,8 +20,8 @@ public class MemberDaoImpl implements MemberDao {
 
     @Override
     public MemberEntity create(MemberEntity memberEntity) {
-        memberRepository.save(memberEntity);
-        return memberEntity;
+        MemberEntity member = memberRepository.save(memberEntity);
+        return member;
     }
 
     @Override

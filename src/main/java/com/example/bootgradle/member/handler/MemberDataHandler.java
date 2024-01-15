@@ -6,6 +6,6 @@ import com.example.bootgradle.member.repository.entity.MemberEntity;
 import java.util.List;
 
 public interface MemberDataHandler {
-    MemberEntity create(String id, String phoneNumber,String address, String name, String email);
+    MemberEntity create(MemberDto memberDto);
     List<MemberEntity> findAll();
 }

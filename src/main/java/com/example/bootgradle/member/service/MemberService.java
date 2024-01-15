@@ -6,6 +6,6 @@ import com.example.bootgradle.member.repository.entity.MemberEntity;
 import java.util.List;
 
 public interface MemberService {
-    MemberDto create(String id, String phoneNumber, String address, String name, String email);
+    int create(MemberDto memberDto);
     List<MemberDto> findAll();
 }

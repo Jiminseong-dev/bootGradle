@@ -21,5 +21,9 @@ public class MemberDto {
     private String name;
     @Schema(description = "사용자 주소")
     private String address;
+    @Schema(description = "상세 주소")
+    private String detailAddress;
+    @Schema(description = "우편 번호")
+    private String postcode;
 
 }
