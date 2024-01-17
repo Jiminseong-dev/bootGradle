@@ -22,7 +22,7 @@ public class MemberDto {
     @Schema(description = "사용자 주소")
     private String address;
     @Schema(description = "상세 주소")
-    private String detailAddress;
+    private String detail_address;
     @Schema(description = "우편 번호")
     private String postcode;
 

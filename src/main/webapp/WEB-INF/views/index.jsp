@@ -65,6 +65,7 @@
 <div class="member-details">
     <c:forEach items="${member}" var="item">
         <div>
+        <div>
             <strong>이름:</strong> ${item.name}
         </div>
         <div>
@@ -77,10 +78,19 @@
             <strong>이메일:</strong> ${item.email}
         </div>
         <div>
-            <strong>주소:</strong> ${item.address}: ${item.detail_Address}
+            <strong>주소:</strong> ${item.address}: ${item.detail_address}
+        </div>
+            <button type="button" class="memberModify" data-id="${item.id}">수정</button>
         </div>
     </c:forEach>
 </div>
 
 </body>
 </html>
+<script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+<script>
+    $('.memberModify').on('click',function(){
+        var id = $(this).data('id');
+        location.href="/member/modifyPage/"+id
+    })
+</script>

@@ -10,6 +10,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
@@ -46,6 +47,13 @@ public class MemberController {
         log.info(memberDto.toString());
         int result = memberService.create(memberDto);
         log.info(result+"");
+        return modelAndView;
+    }
+    @Operation(summary = "사용자 수정")
+    @GetMapping("/member/modifyPage/${id}")
+    public ModelAndView modify(@PathVariable String id){
+        ModelAndView modelAndView = new ModelAndView("/member/memberModify");
+        log.info(id);
         return modelAndView;
     }
 }

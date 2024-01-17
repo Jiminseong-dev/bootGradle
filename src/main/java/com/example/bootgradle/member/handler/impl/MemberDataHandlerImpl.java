@@ -31,7 +31,7 @@ public class MemberDataHandlerImpl implements MemberDataHandler {
                 .address(memberDto.getAddress())
                 .name(memberDto.getName())
                 .email(memberDto.getEmail())
-                .detailAddress(memberDto.getDetailAddress())
+                .detailAddress(memberDto.getDetail_address())
                 .postcode(memberDto.getPostcode())
                 .build();
         return memberDaoImpl.create(memberEntity);

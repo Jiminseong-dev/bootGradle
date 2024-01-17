@@ -66,7 +66,7 @@
         </div>
         <div class="flex">
             <input type="text" id="sample6_address" name="address" placeholder="주소"><br>
-            <input type="text" id="sample6_detailAddress" name="detailAddress" placeholder="상세주소">
+            <input type="text" id="sample6_detailAddress" name="detail_address" placeholder="상세주소">
         </div>
     </div>
     <%--주소 api end--%>
