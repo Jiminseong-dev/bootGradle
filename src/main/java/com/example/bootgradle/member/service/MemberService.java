@@ -8,4 +8,5 @@ import java.util.List;
 public interface MemberService {
     int create(MemberDto memberDto);
     List<MemberDto> findAll();
+    int modify(MemberDto memberDto);
 }

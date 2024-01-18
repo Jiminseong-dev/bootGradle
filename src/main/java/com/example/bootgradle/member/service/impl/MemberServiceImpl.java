@@ -43,4 +43,13 @@ public class MemberServiceImpl implements MemberService {
                 .build()).toList();
         return memberDtoList;
     }
+    @Override
+    public int modify(MemberDto memberDto) {
+
+        MemberEntity memberEntity = memberDataHandler.modify(memberDto);
+        if(memberEntity == null){
+            return 0;
+        }
+        return 1;
+    }
 }

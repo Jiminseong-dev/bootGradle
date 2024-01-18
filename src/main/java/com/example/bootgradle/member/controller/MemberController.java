@@ -50,10 +50,12 @@ public class MemberController {
         return modelAndView;
     }
     @Operation(summary = "사용자 수정")
-    @GetMapping("/member/modifyPage/${id}")
+    @GetMapping("/member/modifyPage/{id}")
     public ModelAndView modify(@PathVariable String id){
         ModelAndView modelAndView = new ModelAndView("/member/memberModify");
         log.info(id);
+        MemberDto memberDto = MemberDto.builder().id(id).build();
+        int result = memberService.modify(memberDto);
         return modelAndView;
     }
 }
