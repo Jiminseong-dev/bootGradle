@@ -51,11 +51,11 @@ public class MemberController {
     }
     @Operation(summary = "사용자 수정")
     @GetMapping("/member/modifyPage/{id}")
-    public ModelAndView modify(@PathVariable String id){
+    public ModelAndView modify(@PathVariable Long id){
         ModelAndView modelAndView = new ModelAndView("/member/memberModify");
-        log.info(id);
-        MemberDto memberDto = MemberDto.builder().id(id).build();
-        int result = memberService.modify(memberDto);
+        log.info(String.valueOf(id));
+        MemberDto memberDto = memberService.modify(id);
+        modelAndView.addObject("modifyMemberInfo",memberDto);
         return modelAndView;
     }
 }

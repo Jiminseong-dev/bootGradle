@@ -55,21 +55,21 @@
 </head>
 <body>
 <form action="/member/update" method="post">
-    <input type="hidden" name="id" value="<%= memberId %>">
-    <input name="name" placeholder="이름" autocomplete="off" value="<%= memberName %>">
-    <input name="phoneNumber" placeholder="전화번호" autocomplete="off" value="<%= memberPhoneNumber %>">
+    <input type="hidden" name="id" value="">
+    <input name="name" placeholder="이름" autocomplete="off" value="${modifyMemberInfo.name}">
+    <input name="phoneNumber" placeholder="전화번호" autocomplete="off" value="${modifyMemberInfo.phoneNumber}">
     <div>
         <div class="flex">
-            <input type="text" id="sample6_postcode" name="postcode" placeholder="우편번호" value="<%= memberPostcode %>">
+            <input type="text" id="sample6_postcode" name="postcode" placeholder="우편번호" value="${modifyMemberInfo.postcode}">
             <input type="button" onclick="sample6_execDaumPostcode()" value="우편번호 찾기"><br>
         </div>
         <div class="flex">
-            <input type="text" id="sample6_address" name="address" placeholder="주소" value="<%= memberAddress %>"><br>
-            <input type="text" id="sample6_detailAddress" name="detail_address" placeholder="상세주소" value="<%= memberDetailAddress %>">
+            <input type="text" id="sample6_address" name="address" placeholder="주소" value="${modifyMemberInfo.address}"><br>
+            <input type="text" id="sample6_detailAddress" name="detail_address" placeholder="상세주소" value="${modifyMemberInfo.detail_address}">
         </div>
     </div>
-    <input name="email" placeholder="이메일" autocomplete="off" value="<%= memberEmail %>">
-    <button type="submit">회원 정보 수정</button>
+    <input name="email" placeholder="이메일" autocomplete="off" value="${modifyMemberInfo.email}">
+    <button type="submit" data-index="${modifyMemberInfo.index}">회원 정보 수정</button>
 </form>
 </body>
 </html>

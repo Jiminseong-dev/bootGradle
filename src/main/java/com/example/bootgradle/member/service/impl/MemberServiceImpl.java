@@ -35,21 +35,32 @@ public class MemberServiceImpl implements MemberService {
     public List<MemberDto> findAll() {
         List<MemberEntity> memberEntityList = memberDataHandler.findAll();
         List<MemberDto> memberDtoList = memberEntityList.stream().map(memberEntity -> new MemberDto().builder()
+                .index(String.valueOf(memberEntity.getIndex()))
                 .id(memberEntity.getId())
                 .phoneNumber(memberEntity.getPhoneNumber())
                 .address(memberEntity.getAddress())
                 .name(memberEntity.getName())
                 .email(memberEntity.getEmail())
+                .postcode(memberEntity.getPostcode())
                 .build()).toList();
         return memberDtoList;
     }
     @Override
-    public int modify(MemberDto memberDto) {
+    public MemberDto modify(Long id) {
 
-        MemberEntity memberEntity = memberDataHandler.modify(memberDto);
-        if(memberEntity == null){
-            return 0;
-        }
-        return 1;
+        MemberEntity memberEntity = memberDataHandler.modify(id);
+
+        MemberDto resultMemberDto = MemberDto.builder()
+                .index(String.valueOf(memberEntity.getIndex()))
+                .id(memberEntity.getId())
+                .name(memberEntity.getName())
+                .email(memberEntity.getEmail())
+                .detail_address(memberEntity.getDetailAddress())
+                .postcode(memberEntity.getPostcode())
+                .email(memberEntity.getEmail())
+                .address(memberEntity.getAddress())
+                .phoneNumber(memberEntity.getPhoneNumber())
+                .build();
+        return resultMemberDto;
     }
 }

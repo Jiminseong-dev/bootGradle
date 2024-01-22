@@ -1,5 +1,6 @@
 package com.example.bootgradle.member.dao.impl;
 
+import com.example.bootgradle.member.controller.dto.MemberDto;
 import com.example.bootgradle.member.dao.MemberDao;
 import com.example.bootgradle.member.repository.MemberRepository;
 import com.example.bootgradle.member.repository.entity.MemberEntity;
@@ -27,5 +28,9 @@ public class MemberDaoImpl implements MemberDao {
     @Override
     public List<MemberEntity> findAll() {
         return memberRepository.findAll();
+    }
+    @Override
+    public MemberEntity modify(Long id){
+        return memberRepository.findById(id).orElse(null);
     }
 }

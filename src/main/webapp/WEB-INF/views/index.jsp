@@ -80,7 +80,7 @@
         <div>
             <strong>주소:</strong> ${item.address}: ${item.detail_address}
         </div>
-            <button type="button" class="memberModify" data-id="${item.id}">수정</button>
+            <button type="button" class="memberModify" data-index="${item.index}">수정</button>
         </div>
     </c:forEach>
 </div>
@@ -90,7 +90,7 @@
 <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
 <script>
     $('.memberModify').on('click',function(){
-        var id = $(this).data('id');
-        location.href="/member/modifyPage/"+id
+        var index = $(this).data('index');
+        location.href="/member/modifyPage/"+index
     })
 </script>

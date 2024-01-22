@@ -9,5 +9,5 @@ import java.util.List;
 public interface MemberDataHandler {
     MemberEntity create(MemberDto memberDto);
     List<MemberEntity> findAll();
-    MemberEntity modify(MemberDto memberDto);
+    MemberEntity modify(Long id);
 }

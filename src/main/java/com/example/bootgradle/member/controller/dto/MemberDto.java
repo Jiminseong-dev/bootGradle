@@ -11,6 +11,8 @@ import lombok.*;
 @Data
 public class MemberDto {
     @Schema(description = "PK")
+    private String index;
+    @Schema(description = "사용자 아이디")
     private String id;
 
     @Schema(description = "사용자 핸드폰 번호")

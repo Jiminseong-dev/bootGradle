@@ -41,17 +41,7 @@ public class MemberDataHandlerImpl implements MemberDataHandler {
         return memberDaoImpl.findAll();
     }
     @Override
-    public int modify(MemberDto memberDto) {
-
-        MemberEntity memberEntity = MemberEntity.builder()
-                .id(memberDto.getId())
-                .phoneNumber(memberDto.getPhoneNumber())
-                .address(memberDto.getAddress())
-                .name(memberDto.getName())
-                .email(memberDto.getEmail())
-                .detailAddress(memberDto.getDetail_address())
-                .postcode(memberDto.getPostcode())
-                .build();
-        return memberDaoImpl.modify(memberEntity);
+    public MemberEntity modify(Long id) {
+        return memberDaoImpl.modify(id);
     }
 }
