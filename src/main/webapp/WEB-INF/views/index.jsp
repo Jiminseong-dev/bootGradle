@@ -9,82 +9,81 @@
     <title>회원 목록</title>
     <style>
         body {
-            font-family: 'Arial', sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f4f4f4;
+            font-family: sans-serif;
+            font-size: 16px;
         }
 
         header {
-            background-color: #333;
-            color: white;
+            background-color: #292929;
             padding: 10px;
+            color: white;
+        }
+
+        h1 {
+            font-size: 24px;
+        }
+
+        main {
+            margin-top: 20px;
+        }
+
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        th, td {
+            border: 1px solid #ccc;
+            padding: 10px;
+        }
+
+        th {
             text-align: center;
         }
 
-        .member-details {
-            width: 80%;
-            margin: 20px auto;
-            background-color: white;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        tbody tr:nth-child(even) {
+            background-color: #f2f2f2;
         }
 
-        .member-details div {
-            margin-bottom: 10px;
-        }
-
-        a {
-            display: inline-block;
-            margin-top: 20px;
-            padding: 10px 20px;
-            text-decoration: none;
+        footer {
+            background-color: #292929;
+            padding: 10px;
             color: white;
-            background-color: #007bff;
-            border-radius: 5px;
-        }
-
-        /* New styles for member details */
-        .member-details strong {
-            color: #333;
-        }
-
-        .member-details div {
-            border-bottom: 1px solid #ccc;
-            padding-bottom: 10px;
+            text-align: center;
         }
     </style>
 </head>
 <body>
 <header>
-    <h1>회원 목록</h1>
+    <h1>사용자 목록</h1>
 </header>
 <a href="/member/createPage">회원가입</a>
-
-<div class="member-details">
-    <c:forEach items="${member}" var="item">
-        <div>
-        <div>
-            <strong>이름:</strong> ${item.name}
-        </div>
-        <div>
-            <strong>아이디:</strong> ${item.id}
-        </div>
-        <div>
-            <strong>전화번호:</strong> ${item.phoneNumber}
-        </div>
-        <div>
-            <strong>이메일:</strong> ${item.email}
-        </div>
-        <div>
-            <strong>주소:</strong> ${item.address}: ${item.detail_address}
-        </div>
-            <button type="button" class="memberModify" data-index="${item.seq}">수정</button>
-            <button type="button" class="memberDelete" data-index="${item.seq}">삭제</button>
-        </div>
-    </c:forEach>
-</div>
+<main>
+    <table>
+        <thead>
+        <tr>
+            <th>아이디</th>
+            <th>이름</th>
+            <th>이메일</th>
+            <th>전화번호</th>
+            <th>주소</th>
+        </tr>
+        </thead>
+        <tbody>
+        <c:forEach items="${member}" var="item">
+            <td>이름:${item.name}</td>
+            <td>아이디:${item.id}</td>
+            <td>전화번호:${item.phoneNumber}</td>
+            <td>이메일:${item.email}</td>
+            <td>주소: ${item.address}: ${item.detail_address}</td>
+        <td><button type="button" class="memberModify" data-index="${item.seq}">수정</button><button type="button" class="memberDelete" data-index="${item.seq}">삭제</button></td>
+        </c:forEach>
+        </tbody>
+    </table>
+</main>
+<footer>
+    <p>&copy; 2023. All rights reserved.</p>
+</footer>
 
 </body>
 </html>
