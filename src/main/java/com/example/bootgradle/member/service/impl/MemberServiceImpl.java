@@ -35,7 +35,7 @@ public class MemberServiceImpl implements MemberService {
     public List<MemberDto> findAll() {
         List<MemberEntity> memberEntityList = memberDataHandler.findAll();
         List<MemberDto> memberDtoList = memberEntityList.stream().map(memberEntity -> new MemberDto().builder()
-                .index(String.valueOf(memberEntity.getIndex()))
+                .seq(String.valueOf(memberEntity.getSeq()))
                 .id(memberEntity.getId())
                 .phoneNumber(memberEntity.getPhoneNumber())
                 .address(memberEntity.getAddress())
@@ -46,12 +46,12 @@ public class MemberServiceImpl implements MemberService {
         return memberDtoList;
     }
     @Override
-    public MemberDto modify(Long id) {
+    public MemberDto getMemberInfo(Long id) {
 
-        MemberEntity memberEntity = memberDataHandler.modify(id);
+        MemberEntity memberEntity = memberDataHandler.getMemberInfo(id);
 
         MemberDto resultMemberDto = MemberDto.builder()
-                .index(String.valueOf(memberEntity.getIndex()))
+                .seq(String.valueOf(memberEntity.getSeq()))
                 .id(memberEntity.getId())
                 .name(memberEntity.getName())
                 .email(memberEntity.getEmail())
@@ -62,5 +62,24 @@ public class MemberServiceImpl implements MemberService {
                 .phoneNumber(memberEntity.getPhoneNumber())
                 .build();
         return resultMemberDto;
+    }
+    @Override
+    public int modifyMemberInfo(MemberDto memberDto) {
+        int memberEntity = memberDataHandler.modifyMemberInfo(
+                Long.valueOf(memberDto.getSeq()),
+                memberDto.getId(),
+                memberDto.getName(),
+                memberDto.getEmail(),
+                memberDto.getAddress(),
+                memberDto.getDetail_address(),
+                memberDto.getPostcode(),
+                memberDto.getPhoneNumber());
+      return 1;
+
+    }
+    @Override
+    public int memberDelete(Long seq) {
+        int result = memberDataHandler.memberDelete(seq);
+        return 1;
     }
 }

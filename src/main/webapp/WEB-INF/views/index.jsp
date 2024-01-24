@@ -80,7 +80,8 @@
         <div>
             <strong>주소:</strong> ${item.address}: ${item.detail_address}
         </div>
-            <button type="button" class="memberModify" data-index="${item.index}">수정</button>
+            <button type="button" class="memberModify" data-index="${item.seq}">수정</button>
+            <button type="button" class="memberDelete" data-index="${item.seq}">삭제</button>
         </div>
     </c:forEach>
 </div>
@@ -92,5 +93,15 @@
     $('.memberModify').on('click',function(){
         var index = $(this).data('index');
         location.href="/member/modifyPage/"+index
+    })
+    $('.memberDelete').on('click',function(){
+        var index = $(this).data('index')
+        $.ajax({
+            url:"/member/delete/"+index,
+            type:"DELETE",
+            success:function(){
+                location.reload()
+            }
+        })
     })
 </script>

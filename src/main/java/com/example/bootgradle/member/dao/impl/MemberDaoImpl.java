@@ -30,7 +30,17 @@ public class MemberDaoImpl implements MemberDao {
         return memberRepository.findAll();
     }
     @Override
-    public MemberEntity modify(Long id){
+    public MemberEntity getMemberInfo(Long id){
         return memberRepository.findById(id).orElse(null);
+    }
+    @Override
+    public int modifyMemberInfo(Long seq, String id, String name, String email,String address, String detail_address, String postcode,String phoneNumber){
+        int result = memberRepository.modifyMemberInfo(seq,id,name,email,address,detail_address,postcode,phoneNumber);
+        return 1;
+    }
+    @Override
+    public int memberDelete(Long seq){
+        memberRepository.deleteById(seq);
+        return 1;
     }
 }

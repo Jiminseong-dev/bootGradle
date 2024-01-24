@@ -17,7 +17,8 @@ public class MemberEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     // @GeneratedValue 유일성
     // strategy = GenerationType.IDENTITY => auto_increment <- mysql용 오라클은 다름
-    private Long index;
+    @Column(name = "seq")
+    private Long seq;
 
     private String id;
     private String email;

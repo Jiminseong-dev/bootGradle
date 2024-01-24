@@ -8,5 +8,8 @@ import java.util.List;
 public interface MemberDao {
     MemberEntity create(MemberEntity memberEntity);
     List<MemberEntity> findAll();
-    MemberEntity modify(Long id);
+    MemberEntity getMemberInfo(Long id);
+    int modifyMemberInfo(Long seq, String id, String name, String email,String address, String detail_address, String postcode,String phoneNumber);
+
+    int memberDelete(Long seq);
 }

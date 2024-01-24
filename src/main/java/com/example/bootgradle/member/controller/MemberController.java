@@ -9,10 +9,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.util.ArrayList;
@@ -49,13 +46,27 @@ public class MemberController {
         log.info(result+"");
         return modelAndView;
     }
-    @Operation(summary = "사용자 수정")
-    @GetMapping("/member/modifyPage/{id}")
-    public ModelAndView modify(@PathVariable Long id){
+    @Operation(summary = "사용자 수정 페이지 이동")
+    @GetMapping("/member/modifyPage/{seq}")
+    public ModelAndView modify(@PathVariable Long seq){
         ModelAndView modelAndView = new ModelAndView("/member/memberModify");
-        log.info(String.valueOf(id));
-        MemberDto memberDto = memberService.modify(id);
+        log.info(String.valueOf(seq));
+        MemberDto memberDto = memberService.getMemberInfo(seq);
         modelAndView.addObject("modifyMemberInfo",memberDto);
+        return modelAndView;
+    }
+    @Operation(summary = "사용자 수정")
+    @PostMapping("/member/modify")
+    public ModelAndView modify(MemberDto memberDto){
+        ModelAndView modelAndView = new ModelAndView("redirect:/");
+        memberService.modifyMemberInfo(memberDto);
+        return modelAndView;
+    }
+    @Operation(summary = "사용자 삭제")
+    @DeleteMapping("/member/delete/{seq}")
+    public ModelAndView delete(@PathVariable Long seq){
+        ModelAndView modelAndView = new ModelAndView("redirect:/");
+        memberService.memberDelete(seq);
         return modelAndView;
     }
 }

@@ -41,7 +41,16 @@ public class MemberDataHandlerImpl implements MemberDataHandler {
         return memberDaoImpl.findAll();
     }
     @Override
-    public MemberEntity modify(Long id) {
-        return memberDaoImpl.modify(id);
+    public MemberEntity getMemberInfo(Long id) {
+        return memberDaoImpl.getMemberInfo(id);
     }
+    @Override
+    public int modifyMemberInfo(Long seq, String id, String name, String email,String address, String detail_address, String postcode,String phoneNumber) {
+        return memberDaoImpl.modifyMemberInfo(seq,id,name,email,address,detail_address,postcode,phoneNumber);
+    }
+    @Override
+    public int memberDelete(Long seq){
+        return memberDaoImpl.memberDelete(seq);
+    }
+
 }
